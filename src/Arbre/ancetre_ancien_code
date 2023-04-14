@@ -1,0 +1,113 @@
+        ArrayList<String> liste_nom_n = new ArrayList<>();
+        ArrayList<Integer> noeud_1 = new ArrayList<>();
+        ArrayList<Integer> noeud_2 = new ArrayList<>();
+        int id_pointeur_last_id1 = x;
+        int id_pointeur_last_id2 = x;
+        int generation = 0;
+
+        int id_pointeur_1 = map.get(x).getPere();
+        int id_pointeur_2 = map.get(x).getMere();
+
+        while (
+                id_pointeur_1 !=-1 && id_pointeur_2 !=-1
+            ){
+            System.out.println("lol");
+            for (int i = 1; i <= map.size(); i++) {
+                if (id_pointeur_1 == map.get(i).getPere()) {
+                    //dans le cas ou les deux id ont le même pére
+                    if (id_pointeur_last_id1 != i && liste_nom_n.contains(map.get(i).getNom()) == false) {
+                        liste_nom_n.add(map.get(i).getNom());
+                    }
+                }
+                if (id_pointeur_2 == map.get(i).getMere()) {
+                    //dans le cas ou les deux id ont la même mere
+                    if (id_pointeur_last_id2 != i && liste_nom_n.contains(map.get(i).getNom()) == false) {
+                        liste_nom_n.add(map.get(i).getNom());
+                    }
+                }
+            }
+
+            /////Si le pointeur a deux parents
+            if (map.get(id_pointeur_1).getPere() != -1 && map.get(id_pointeur_1).getMere() != -1) {
+                //si pointeur 1 a deux parent on enregistre la mere pour retourner dessus
+                noeud_1.add(map.get(id_pointeur_1).getMere());
+                id_pointeur_1 = map.get(id_pointeur_1).getPere();
+            }
+            if (map.get(id_pointeur_2).getPere() != -1 && map.get(id_pointeur_2).getMere() != -1) {
+                //si pointeur 2 a deux parent on enregistre la mere pour retourner dessus
+                noeud_2.add(map.get(id_pointeur_2).getMere());
+                id_pointeur_2 = map.get(id_pointeur_2).getPere();
+            }
+
+            ///// Si le pointeur à 1 parents
+            if (map.get(id_pointeur_1).getPere() != -1 && map.get(id_pointeur_1).getMere() != -1) {
+                id_pointeur_1 = map.get(id_pointeur_1).getPere();
+            }
+            if (map.get(id_pointeur_1).getPere() == -1 && map.get(id_pointeur_1).getMere() != -1) {
+                id_pointeur_1 = map.get(id_pointeur_1).getMere();
+            }
+
+            if (map.get(id_pointeur_2).getPere() != -1 && map.get(id_pointeur_2).getMere() != -1) {
+                id_pointeur_2 = map.get(id_pointeur_2).getPere();
+            }
+            if (map.get(id_pointeur_2).getPere() == -1 && map.get(id_pointeur_2).getMere() != -1) {
+                id_pointeur_2 = map.get(id_pointeur_2).getMere();
+            }
+
+//            if (map.get(id_pointeur_1).getPere() )
+            //// Si le pointeur n'as pas de parents c'est gérer comme arret du while
+            System.out.println(map.get(id_pointeur_1).getPere() != -1);
+            generation--;
+            System.out.println(generation +" :\n"+liste_nom_n);
+        }
+
+                ArrayList<Integer> family_id = new ArrayList<>();
+                ArrayList<String> family_id_alt = new ArrayList<>();
+                HashMap<Float, String> table_generation = new HashMap<>();
+                int generation =0;
+                family_id.add(x);
+                System.out.println("debut "+family_id);
+
+                for (int a=0; a < family_id.size();a++) {
+                    generation--;
+
+                    for (int i=1; i<= map.size();i++) {
+
+                        if (map.get(i).getPere()+1 == family_id.get(a) || map.get(i).getMere()+1 == family_id.get(a)){
+        //                        System.out.println(map.get(family_id.get(a)).getNom()+" est parent de "+map.get(i).getNom());
+                            family_id.add(i);
+                            family_id_alt.add(map.get(i).getNom());
+                            System.out.println(generation);
+                        }
+                    }
+                    System.out.println(family_id_alt);
+                    float generation_alt= (float) generation;
+                    for (int i=0; i< family_id_alt.size();i++) {
+                        generation_alt= (float) (generation_alt-0.1);
+                        System.out.println(i);
+                        table_generation.put(generation_alt, family_id_alt.get(i));
+                        System.out.println(table_generation);
+                    }
+                    family_id_alt.clear();
+
+                }
+
+        //TODO probleme quand on efface la liste family_id_alt ça efface aussi ce qu'il y'a dans le tableau
+
+        //            for (int a = 0; a < family_id.size(); a++) {
+        ////                System.out.println("la");
+        //                for (int i = 1; i <= map.size(); i++) {
+        //                    //            System.out.println(map.get(i).getMere());
+        //                    if (map.get(i).getPere() + 1 == (Integer) family_id.get(a) || map.get(i).getMere() + 1 == (Integer) family_id.get(a)) {
+        //                        //                System.out.println(map.get(x).getNom() + " est parent de " + map.get(i).getNom());
+        //                        table_generation.put(generation, map.get(i).getNom());
+        //                        family_id.add(i);
+        //                        compteur++;
+        //                    }
+        //                }
+        //                family_id.remove(a);
+        //            }
+        //            System.out.println(table_generation);
+        //            System.out.println(family_id);
+            }
+

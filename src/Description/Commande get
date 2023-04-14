@@ -1,0 +1,7 @@
+        System.out.println(g.getMap().get(4).getNaissance().getDate());
+        System.out.println(g.getMap().get(4).getNom());
+        System.out.println(g.getMap().get(4).getPere());
+        System.out.println(g.getMap().get(4).getMere());
+
+Commande pour choper le bon grand parent
+

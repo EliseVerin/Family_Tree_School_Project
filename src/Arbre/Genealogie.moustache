@@ -1,0 +1,23 @@
+        int pere_id_1=map.get(x).getPere();
+        int mere_id_1=map.get(x).getMere();
+        int pere_id_2=map.get(y).getPere();
+        int mere_id_2=map.get(y).getMere();
+//        System.out.println(pere_id_1 + " "+mere_id_1+" "+pere_id_2+" "+mere_id_2);
+
+        int gpp_id_1=map.get(pere_id_1).getPere();//l
+        int gmp_id_1=map.get(pere_id_1).getMere();//l
+        int gpm_id_1=map.get(mere_id_1).getPere();//mm
+        int gmm_id_1=map.get(mere_id_1).getMere();//mm
+
+        //cherche le grand pere de l'id 1 donc Pierre
+        System.out.println(getID(mere_id_1).getNom());
+
+//        System.out.println(map.get(gpm_id_1).getNom()+" "+gmm_id_1+" "+gmp_id_1+" "+ gpp_id_1+" "+ gpm_id_2+" "+gmm_id_2+" "+gpp_id_2+" "+gmp_id_2);
+//        System.out.println(map.get(gpm_id_1).getNom()+" "+map.get(gmm_id_1).getNom()+" "+map.get(gmp_id_1).getNom()+" "+ map.get(gpp_id_1).getNom()+" "+ map.get(gpm_id_2).getNom()+" "+map.get(gmm_id_2).getNom()+" "+map.get(gpp_id_2).getNom()+" "+map.get(gmp_id_2).getNom());
+
+//        if (gpp_id_1==gpp_id_2 && gmp_id_1==gmp_id_2 || gpp_id_1==gpm_id_2 && gmp_id_1==gmm_id_2 || gpm_id_1==gpp_id_2 && gmm_id_1==gmp_id_2 || gpm_id_1==gpm_id_2 && gmm_id_1==gmm_id_2){
+//        if (gpm_id_1==gpm_id_2&&gmm_id_1==gmm_id_2){
+//            System.out.println("lol");
+//            if (freres_soeurs(x,y)==false) {
+//                return true;
+//            }
